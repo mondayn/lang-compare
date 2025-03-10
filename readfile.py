@@ -1,17 +1,27 @@
-
 import concurrent.futures
 import time
+import psutil
+import os
+
+
+def memory_usage():
+    process = psutil.Process(os.getpid())
+    return process.memory_info().rss / 1024 / 1024  # Return memory usage in MB
 
 def track_duration(fn):
     def wrapper(*args,**kwargs):
+        start_mem = memory_usage()
         start = time.perf_counter()
         fn(*args,**kwargs)
         end = time.perf_counter()
+        end_mem = memory_usage()
         print(f"{fn.__name__}: {end - start:.4f} seconds")
+        print(f'starting memory {start_mem}')
+        print(f'ending memory {end_mem}')
+        print(f'memory difference {end_mem-start_mem}')
         return
     return wrapper
 
-# file_path='/home/nathan/Downloads/Chase1122_Activity20231118.CSV'
 file_path='/home/nathan/Downloads/CVAP_2019-2023_ACS_csv_files/Tract.csv'
 
 @track_duration

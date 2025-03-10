@@ -2,10 +2,21 @@
 
 intel n100
 
-time & memory to read in 126mb file
+| Read 126 mb file | Duration (ms) |          Memory |
+| :--------------- | :-----------: | --------------: |
+| python           |      550      |   +.25mb change |
+| py multithread   |      160      |   +3.5mb change |
+| go               |      135      |   +.98mb change |
+| julia            |      190      | 144mb allocated |
+| rust             |      214      |  25mb allocated |
+| roc              |               |                 |
+| c gcc            |      72       |      256kb used |
 
-- python single thread .55s, +.25mb change
-- python multi thread .16s, +3.5mb change
-- go single thread .135s, +.98mb change
-- julia single thread .19s, 144mb allocated
-- rust single thread .214s, 25mb allocated
+<br>
+<br>
+
+TODO
+
+| Insert File to Postgres | Duration (ms) | Memory |
+| :---------------------- | :-----------: | -----: |
+| python                  |               |        |
