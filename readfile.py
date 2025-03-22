@@ -1,3 +1,6 @@
+
+#python3 readfile.py
+
 import concurrent.futures
 import time
 import psutil
@@ -10,15 +13,15 @@ def memory_usage():
 
 def track_duration(fn):
     def wrapper(*args,**kwargs):
-        start_mem = memory_usage()
+        # start_mem = memory_usage()
         start = time.perf_counter()
         fn(*args,**kwargs)
         end = time.perf_counter()
-        end_mem = memory_usage()
+        # end_mem = memory_usage()
         print(f"{fn.__name__}: {end - start:.4f} seconds")
-        print(f'starting memory {start_mem}')
-        print(f'ending memory {end_mem}')
-        print(f'memory difference {end_mem-start_mem}')
+        # print(f'starting memory {start_mem}')
+        # print(f'ending memory {end_mem}')
+        # print(f'memory difference {end_mem-start_mem}')
         return
     return wrapper
 
@@ -29,7 +32,7 @@ def single_thread():
     i=0
     with open(file_path, "r",encoding="utf-8",errors='ignore') as file:
         for line in file:
-            s = line.strip().split(',')
+            #s = line.strip().split(',')  #makes a big difference
             i+=1
 
     print(i)

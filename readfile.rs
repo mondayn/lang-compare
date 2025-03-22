@@ -1,7 +1,26 @@
+// to compile: rustc readfile.rs
+// to run: ./readfile
+
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::time::Instant;
-use std::mem;
+// use std::mem;
+
+fn _count_lines<T: BufRead>(reader: &mut T) -> usize {
+    reader.lines().count()
+}
+
+fn parse_and_count_lines<T: BufRead>(reader: &mut T) -> usize {
+    let mut line_count = 0;
+    for line in reader.lines() {
+        if let Ok(line) = line {
+            let _tokens: Vec<&str> = line.split(',').collect();
+//            println!("{:?}", tokens); // Print tokens (parsed by comma)
+            line_count += 1;
+        }
+    }
+    line_count
+}
 
 fn main() -> io::Result<()> {
     let file_path = "/home/nathan/Downloads/CVAP_2019-2023_ACS_csv_files/Tract.csv";
@@ -11,15 +30,28 @@ fn main() -> io::Result<()> {
 
     // Open the file
     let file = File::open(file_path)?;
-    let reader = io::BufReader::new(file);
+    let mut reader = io::BufReader::new(file);
 
-    let mut total_size = 0; // To track the memory used by each line
+    let line_count = parse_and_count_lines(&mut reader);
+
+//    let mut total_size = 0; // To track the memory used by each line
+//    let mut line_count = 0;
+
+    // for line in reader.lines() {
+    //     if let Ok(_line) = line {
+    //         //let _tokens: Vec<&str> = line.split(',').collect(); // Split by ","
+    //         //println!("{:?}", tokens); // Print parsed values
+    //         line_count += 1;
+    //     }
+    // }
+   println!("lines are {}", line_count); 
+
 
     // for line in reader.lines() 
-    for line in reader.split(b'\n') {
-        let line = line?; // Read each line
-        total_size += mem::size_of_val(&line); // Estimate the memory used by the line
-    }
+    // for line in reader.split(b'\n') {
+    //     let line = line?; // Read each line
+    //     // total_size += mem::size_of_val(&line); // Estimate the memory used by the line
+    // }
 
     // Measure the duration
     let duration = start.elapsed();
@@ -27,7 +59,7 @@ fn main() -> io::Result<()> {
 
     // Output the results
     println!("Time taken: {} milliseconds", duration_ms);
-    println!("Memory used: {} mb", total_size /1024 / 1024);
+    // println!("Memory used: {} mb", total_size /1024 / 1024);
 
     Ok(())
 }

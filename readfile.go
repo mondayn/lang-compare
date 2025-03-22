@@ -1,3 +1,5 @@
+// go run readfile.go
+
 package main
 
 import (
@@ -5,11 +7,10 @@ import (
 	"fmt"
 	"os"
 	"runtime"
-	"strings"
 	"time"
 )
 
-func readfile(approach string) int {
+func readfile() int {
 
 	file_path := "/home/nathan/Downloads/CVAP_2019-2023_ACS_csv_files/Tract.csv"
 	line_count := 0
@@ -19,37 +20,24 @@ func readfile(approach string) int {
 	runtime.GC()
 	runtime.ReadMemStats(&memBefore)
 
-	if approach == "scanner" {
+	file, _ := os.Open(file_path)
+	defer file.Close()
 
-		file, _ := os.Open(file_path)
-		defer file.Close()
+	scanner := bufio.NewScanner(file)
+	const maxBufferSize = 1024 * 1024 // 1MB
+	buf := make([]byte, maxBufferSize)
+	scanner.Buffer(buf, maxBufferSize)
 
-		scanner := bufio.NewScanner(file)
-		const maxBufferSize = 1024 * 1024 // 1MB
-		buf := make([]byte, maxBufferSize)
-		scanner.Buffer(buf, maxBufferSize)
-
-		for scanner.Scan() {
-			_ = scanner.Text()
-			line_count += 1
-			// fmt.Println(line)
-		}
-	} else {
-		//35% slower than scanner
-		data, err := os.ReadFile(file_path)
-		if err != nil {
-			return 0
-		}
-		lines := strings.Split(string(data), "\n")
-		for range lines {
-			line_count += 1
-		}
+	for scanner.Scan() {
+		_ = scanner.Text() // duration reduces to 35 ms without this
+		//_ = strings.Split(line, ",")
+		line_count += 1
+		// fmt.Println(line)
 	}
 
 	runtime.ReadMemStats(&memAfter)
 	duration := time.Since(start) // Calculate elapsed time
 
-	fmt.Println(approach)
 	fmt.Println("MB used: ", float64(memAfter.Alloc-memBefore.Alloc)/1024/1024)
 	fmt.Println("Execution time:", duration)
 
@@ -57,7 +45,6 @@ func readfile(approach string) int {
 }
 
 func main() {
-	lines := readfile("scanner")
+	lines := readfile()
 	fmt.Println("Total lines:", lines)
-	_ = readfile("readfile")
 }

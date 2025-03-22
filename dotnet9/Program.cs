@@ -1,4 +1,7 @@
-﻿using System;
+﻿// cd dotnet9
+// dotnet run
+
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
@@ -16,7 +19,7 @@ class Program
         }*/
 
         // Measure memory before execution
-        long memoryBefore = GC.GetTotalMemory(true);
+        //long memoryBefore = GC.GetTotalMemory(true);
 
         // Measure time taken
         Stopwatch stopwatch = Stopwatch.StartNew();
@@ -25,16 +28,19 @@ class Program
         //Console.WriteLine(line); // Process the line (remove this for faster execution)
         //}
 
+        int line_count = 0;
         foreach (string line in File.ReadLines(filePath))
         {
+            line_count += 1;
             //Console.WriteLine(line);
+            string[] tokens = line.Split(',');
         }
 
         stopwatch.Stop();
-        long memoryAfter = GC.GetTotalMemory(true);
+        //long memoryAfter = GC.GetTotalMemory(true);
 
-        // Display results
+        Console.WriteLine($"\nLines: {line_count}");
         Console.WriteLine($"\nExecution Time: {stopwatch.ElapsedMilliseconds} ms");
-        Console.WriteLine($"Memory Used: {memoryAfter - memoryBefore} bytes");
+        //Console.WriteLine($"Memory Used: {memoryAfter - memoryBefore} bytes");
     }
 }

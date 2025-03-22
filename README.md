@@ -2,19 +2,20 @@
 
 intel n100
 
-| Read 126 mb file | Duration (ms) |          Memory |
-| :--------------- | :-----------: | --------------: |
-| c gcc            |      72       |      256kb used |
-| go               |      100      |   +.98mb change |
-| dotnet9          |      154      |       752 bytes |
-| py multi-thread  |      160      |   +3.5mb change |
-| julia            |      190      | 144mb allocated |
-| go (4 threads)   |      200      |                 |
-| rust             |      214      |  25mb allocated |
-| python           |      550      |   +.25mb change |
-| roc              |               |                 |
+to do: measure max memory used during process
 
-memory is questionably not apple-to-apples and i should dig into that further.
+| 126 mb file     | Read & Count lines (ms) | Read & Parse |
+| :-------------- | :---------------------: | ------------ |
+| c gcc           |           55            | 425          |
+| go              |           90            | 350          |
+| python          |           142           | 560          |
+| dotnet9         |           169           | 782          |
+| go (4 threads)  |           200           |
+| julia           |           235           | 925          |
+| rust            |           300           | 1000         |
+| py multi-thread |           160           |
+| roc             |                         |
+| clojure         |                         |
 
 <br>
 
