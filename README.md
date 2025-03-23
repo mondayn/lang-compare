@@ -8,18 +8,21 @@ to do: measure max memory used during process
 | :-------------- | :---------------------: | ------------ |
 | c gcc           |           55            | 425          |
 | go              |           90            | 350          |
+| rust            |           120           | 415          |
+| zig             |           134           | 250          |
 | python          |           142           | 560          |
-| dotnet9         |           169           | 782          |
+| py multi-thread |           160           |
+| c#              |           149           | 650          |
 | go (4 threads)  |           200           |
 | julia           |           235           | 925          |
-| rust            |           300           | 1000         |
-| py multi-thread |           160           |
 | roc             |                         |
-| clojure         |                         |
+| clojure         |           500           | 1700         |
 
 <br>
 
 TODO
+nasm
+janet
 
 | Insert File to Postgres | Duration (ms) | Memory |
 | :---------------------- | :-----------: | -----: |

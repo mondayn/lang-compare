@@ -1,4 +1,4 @@
-// to compile: rustc readfile.rs
+// to compile: rustc -C opt-level=3 -C target-cpu=native readfile.rs -o readfile
 // to run: ./readfile
 
 use std::fs::File;
@@ -6,11 +6,11 @@ use std::io::{self, BufRead};
 use std::time::Instant;
 // use std::mem;
 
-fn _count_lines<T: BufRead>(reader: &mut T) -> usize {
+fn count_lines<T: BufRead>(reader: &mut T) -> usize {
     reader.lines().count()
 }
 
-fn parse_and_count_lines<T: BufRead>(reader: &mut T) -> usize {
+fn _parse_and_count_lines<T: BufRead>(reader: &mut T) -> usize {
     let mut line_count = 0;
     for line in reader.lines() {
         if let Ok(line) = line {
@@ -32,7 +32,8 @@ fn main() -> io::Result<()> {
     let file = File::open(file_path)?;
     let mut reader = io::BufReader::new(file);
 
-    let line_count = parse_and_count_lines(&mut reader);
+    // let line_count = parse_and_count_lines(&mut reader);
+    let line_count = count_lines(&mut reader);
 
 //    let mut total_size = 0; // To track the memory used by each line
 //    let mut line_count = 0;
