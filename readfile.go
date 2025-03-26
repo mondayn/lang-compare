@@ -1,3 +1,4 @@
+// go build -ldflags "-s -w" -o readfile readfile.go
 // go run readfile.go
 
 package main
@@ -6,7 +7,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"runtime"
+	"strings"
 	"time"
 )
 
@@ -16,9 +17,9 @@ func readfile() int {
 	line_count := 0
 
 	start := time.Now()
-	var memBefore, memAfter runtime.MemStats
-	runtime.GC()
-	runtime.ReadMemStats(&memBefore)
+	//var memBefore, memAfter runtime.MemStats
+	//runtime.GC()
+	//runtime.ReadMemStats(&memBefore)
 
 	file, _ := os.Open(file_path)
 	defer file.Close()
@@ -29,16 +30,16 @@ func readfile() int {
 	scanner.Buffer(buf, maxBufferSize)
 
 	for scanner.Scan() {
-		_ = scanner.Text() // duration reduces to 35 ms without this
-		//_ = strings.Split(line, ",")
+		line := scanner.Text() // duration reduces to 35 ms without this
+		_ = strings.Split(line, ",")
 		line_count += 1
 		// fmt.Println(line)
 	}
 
-	runtime.ReadMemStats(&memAfter)
+	//runtime.ReadMemStats(&memAfter)
 	duration := time.Since(start) // Calculate elapsed time
 
-	fmt.Println("MB used: ", float64(memAfter.Alloc-memBefore.Alloc)/1024/1024)
+	//fmt.Println("MB used: ", float64(memAfter.Alloc-memBefore.Alloc)/1024/1024)
 	fmt.Println("Execution time:", duration)
 
 	return line_count

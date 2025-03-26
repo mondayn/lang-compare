@@ -12,8 +12,7 @@ to do: measure max memory used during process
 | zig             |           134           | 250          |
 | python          |           142           | 560          |
 | c#              |           149           | 650          |
-| sa              |           149           | 650          |
-| nasm (not simd) |           155           |
+| nasm            |           155           |
 | py multi-thread |           160           |
 | go (4 threads)  |           200           |
 | julia           |           235           | 925          |
