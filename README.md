@@ -1,8 +1,8 @@
 # lang-compare
 
-intel n100
+similar to https://programming-language-benchmarks.vercel.app/, implementation matters
 
-to do: measure max memory used during process
+intel n100
 
 | 126 mb file     | Read & Count lines (ms) | Read & Parse |
 | :-------------- | :---------------------: | ------------ |
@@ -17,6 +17,7 @@ to do: measure max memory used during process
 | go (4 threads)  |           200           |
 | julia           |           235           | 925          |
 | clojure         |           500           | 1700         |
+| roc             |          1000           |              |
 
 <br>
 Compiliation efforts
@@ -28,7 +29,6 @@ Compiliation efforts
 TODO
 
 - nasm simd
-- roc
 
 | Insert File to Postgres | Duration (ms) | Memory |
 | :---------------------- | :-----------: | -----: |
