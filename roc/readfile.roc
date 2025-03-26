@@ -20,6 +20,8 @@ readfile! = |{}|
     Stdout.line!("Done reading file: ${Inspect.to_str(read_summary)}")
 
 
+# https://github.com/roc-lang/basic-cli/blob/main/examples/file-read-buffered.roc
+
 ReadSummary : {
     lines_read : U64,
     bytes_read : U64,
