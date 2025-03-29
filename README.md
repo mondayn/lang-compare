@@ -33,6 +33,15 @@ TODO
 
 - nasm simd
 
-| Insert File to Postgres | Duration (ms) | Memory |
-| :---------------------- | :-----------: | -----: |
-| python                  |               |        |
+| Insert File to Postgres | Duration | Processes |
+| :---------------------- | :------: | --------- |
+| py batch size 1000      |   69s    | 1         |
+| py batch size 50000     |   63s    | 1         |
+| py copy_from postgres   |    5s    |
+| go batch size 1000      |   54s    | 1         |
+| go batch size 5000      |   58s    | 1         |
+
+Go inserted about 20% faster, not much. Claude > ChatGpt
+
+TODO
+4 processes
