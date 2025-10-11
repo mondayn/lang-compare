@@ -10,6 +10,7 @@ intel n100
 | go              |           90            | 350          |
 | rust            |           120           | 415          |
 | zig             |           134           | 250          |
+| odin            |           137           |              |
 | python          |           142           | 560          |
 | c#              |           149           | 650          |
 | nasm            |           155           |
@@ -25,7 +26,7 @@ intel n100
 <br>
 Compiliation efforts
 
-- helped significantly: zig, rust
+- helped significantly: zig, rust, odin
 - did not help significantly: go, c#, clojure
 
 <br>
