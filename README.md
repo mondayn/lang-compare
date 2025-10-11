@@ -33,6 +33,10 @@ Compiliation efforts
 - did not help significantly: go, c#, clojure
 
 <br>
+- golang - great performance out of box
+- luajit - easy install, decent performance, repl
+
+<br>
 TODO
 
 - nasm simd
