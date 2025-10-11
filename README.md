@@ -17,9 +17,12 @@ intel n100
 | py multi-thread |           160           |
 | go (4 threads)  |           200           |
 | julia           |           235           | 925          |
+| luajit          |           289           |              |
 | java aot        |           328           | 700          |
 | clojure         |           500           | 1700         |
 | java jit        |           527           | 800          |
+| gleam           |           520           |              |
+| elixir          |           663           |              |
 | scala           |           691           | 1488         |
 | roc             |          1000           |              |
 
