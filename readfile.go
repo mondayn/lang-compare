@@ -7,13 +7,13 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strings"
 	"time"
 )
 
 func readfile() int {
 
-	file_path := "/home/nathan/Downloads/CVAP_2019-2023_ACS_csv_files/Tract.csv"
+	//file_path := "/home/nathan/Downloads/CVAP_2019-2023_ACS_csv_files/Tract.csv"
+	file_path := "/home/nathan/1brc/measurements.txt"
 	line_count := 0
 
 	start := time.Now()
@@ -30,8 +30,8 @@ func readfile() int {
 	scanner.Buffer(buf, maxBufferSize)
 
 	for scanner.Scan() {
-		line := scanner.Text() // duration reduces to 35 ms without this
-		_ = strings.Split(line, ",")
+		//line := scanner.Text() // duration reduces to 35 ms without this
+		//_ = strings.Split(line, ",")
 		line_count += 1
 		// fmt.Println(line)
 	}
