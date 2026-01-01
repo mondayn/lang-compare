@@ -11,19 +11,19 @@ intel n100
 | zig             |              134              | 250               | 28,870 to 31,000    |
 | odin            |              137              |                   | os "Killed"         |
 | python          |              142              | 560               | 113,000             |
-| c#              |              149              | 650               |                     |
+| c#              |              149              | 650               | 50,731              |
 | nasm            |              155              |                   |                     |
 | nasm simd       |                               |                   |                     |
 | py multi-thread |              160              |                   | os "Killed"         |
 | go (4 threads)  |              200              |                   |                     |
-| julia           |              235              | 925               |
+| julia           |              235              | 925               | 66,300              |
 | luajit          |              289              |                   |
 | java aot        |              328              | 700               | 79,648              |
-| clojure         |              500              | 1700              |
+| clojure         |              500              | 1700              | 113,967             |
 | java jit        |              527              | 800               | 90,809              |
 | gleam           |              520              |                   |
 | elixir          |              663              |                   |
-| scala           |              691              | 1488              |
+| scala           |              691              | 1488              | 86,549 to 127,568   |
 | roc             |             1000              |                   |
 
 Compiling
